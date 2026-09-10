@@ -2,53 +2,137 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المواد الدراسية - منهاج 2026</title>
+    <title>جميع الصفوف والحقول الدراسية - المنهاج الأردني 2026</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f4f7f6; margin: 0; padding: 20px; text-align: right; }
-        .container { max-width: 850px; margin: auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        h1 { color: #0056b3; margin-bottom: 5px; }
-        .subtitle { color: #666; margin-bottom: 20px; font-size: 1rem; }
-        ul { list-style: none; padding: 0; }
-        li { background: #e0f2f1; margin: 12px 0; padding: 15px; border-radius: 5px; font-size: 1.1rem; color: #00695c; border-right: 5px solid #00838f; display: flex; justify-content: space-between; align-items: center; }
-        .download-btn { background: #00838f; color: white; padding: 6px 14px; border-radius: 4px; text-decoration: none; font-size: 0.9rem; font-weight: bold; transition: 0.2s; }
-        .download-btn:hover { background: #0056b3; }
-        .back-btn { display: inline-block; margin-top: 25px; background: #0056b3; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; }
+        body { font-family: 'Cairo', Tahoma, sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; }
+        .container { max-width: 950px; margin: 0 auto; background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        h1 { color: #1a5276; text-align: center; margin-bottom: 5px; }
+        .subtitle { color: #7f8c8d; text-align: center; margin-bottom: 30px; }
+        .grade-section { background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+        .grade-title { color: #2980b9; border-bottom: 2px solid #3498db; padding-bottom: 8px; margin-top: 0; font-size: 20px; }
+        .field-tag { display: inline-block; background: #e67e22; color: white; font-size: 12px; padding: 3px 8px; border-radius: 4px; margin-bottom: 10px; }
+        .subjects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin-top: 10px; }
+        .subject-item { background: #ffffff; border: 1px solid #dcdde1; padding: 10px 15px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: bold; color: #333; }
+        .btn-open { background: #3498db; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px; text-decoration: none; }
+        .btn-open:hover { background: #2980b9; }
+        .back-link { display: inline-block; margin-top: 20px; color: #3498db; text-decoration: none; font-weight: bold; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>📚 مواد المنهاج الأردني (تحديثات 2026)</h1>
-        <p class="subtitle">استعرض الكتب، التلخيصات، وحل أسئلة المراجعة والوحدة</p>
+        <h1>منظومة المناهج الأردنية 2026</h1>
+        <p class="subtitle">دليل الصفوف والحقول الدراسية الجديدة والمحدثة</p>
         
-        <ul>
-            <li>
-                <span>الرياضيات والمهارات الهندسية</span>
-                <a href="#" class="download-btn" onclick="alert('جاري تحميل المادة والملخصات الخاصة بمنهاج 2026...'); return false;">تحميل / تصفح</a>
-            </li>
-            <li>
-                <span>العلوم الحياتية والبيئية</span>
-                <a href="#" class="download-btn" onclick="alert('جاري تحميل المادة والملخصات الخاصة بمنهاج 2026...'); return false;">تحميل / تصفح</a>
-            </li>
-            <li>
-                <span>قواعد اللغة العربية والإنشاء</span>
-                <a href="#" class="download-btn" onclick="alert('جاري تحميل المادة والملخصات الخاصة بمنهاج 2026...'); return false;">تحميل / تصفح</a>
-            </li>
-            <li>
-                <span>اللغة الإنجليزية (English)</span>
-                <a href="#" class="download-btn" onclick="alert('جاري تحميل المادة والملخصات الخاصة بمنهاج 2026...'); return false;">تحميل / تصفح</a>
-            </li>
-            <li>
-                <span>الدراسات الاجتماعية والتاريخ الوطني</span>
-                <a href="#" class="download-btn" onclick="alert('جاري تحميل المادة والملخصات الخاصة بمنهاج 2026...'); return false;">تحميل / تصفح</a>
-            </li>
-            <li>
-                <span>الثقافة المالية والمشاريع</span>
-                <a href="#" class="download-btn" onclick="alert('جاري تحميل المادة والملخصات الخاصة بمنهاج 2026...'); return false;">تحميل / تصفح</a>
-            </li>
-        </ul>
+        <div id="all-grades-container"></div>
 
-        <a href="/grades" class="back-btn">العودة لاختيار الصفوف</a>
+        <a href="index.html" class="back-link">← العودة إلى الصفحة الرئيسية</a>
     </div>
+
+    <script>
+        const allCurriculum = [
+            {
+                grade: "الصف الأول الأساسي",
+                type: "المرحلة الأساسية الدنيا",
+                subjects: ["التربية الإسلامية", "اللغة العربية", "الرياضيات", "اللغة الإنجليزية", "العلوم العامة", "التربية الاجتماعية والوطنية", "الفنون والرياضة"]
+            },
+            {
+                grade: "الصف الثاني الأساسي",
+                type: "المرحلة الأساسية الدنيا",
+                subjects: ["التربية الإسلامية", "اللغة العربية", "الرياضيات", "اللغة الإنجليزية", "العلوم العامة", "التربية الاجتماعية والوطنية", "التربية المهنية"]
+            },
+            {
+                grade: "الصف الثالث الأساسي",
+                type: "المرحلة الأساسية الدنيا",
+                subjects: ["التربية الإسلامية", "اللغة العربية", "الرياضيات", "اللغة الإنجليزية", "العلوم العامة", "الدراسات الاجتماعية", "التربية المهنية", "التكنولوجيا"]
+            },
+            {
+                grade: "الصف الرابع الأساسي",
+                type: "المرحلة الأساسية الدنيا",
+                subjects: ["التربية الإسلامية", "اللغة العربية", "الرياضيات", "اللغة الإنجليزية", "العلوم العامة", "الدراسات الاجتماعية", "التربية المهنية", "التكنولوجيا"]
+            },
+            {
+                grade: "الصف الخامس الأساسي",
+                type: "المرحلة الأساسية العليا",
+                subjects: ["التربية الإسلامية", "اللغة العربية", "الرياضيات", "اللغة الإنجليزية", "العلوم", "الدراسات الاجتماعية", "التربية الوطنية", "المهنية والتكنولوجيا"]
+            },
+            {
+                grade: "الصف السادس الأساسي",
+                type: "المرحلة الأساسية العليا",
+                subjects: ["التربية الإسلامية", "اللغة العربية", "الرياضيات", "اللغة الإنجليزية", "العلوم", "الدراسات الاجتماعية", "التربية الوطنية", "المهنية والتكنولوجيا"]
+            },
+            {
+                grade: "الصف السابع الأساسي",
+                type: "المرحلة الأساسية العليا",
+                subjects: ["التربية الإسلامية", "اللغة العربية", "الرياضيات", "اللغة الإنجليزية", "العلوم", "التاريخ والجغرافيا", "التربية الوطنية", "الثقافة المالية", "الحاسوب"]
+            },
+            {
+                grade: "الصف الثامن الأساسي",
+                type: "المرحلة الأساسية العليا",
+                subjects: ["التربية الإسلامية", "اللغة العربية", "الرياضيات", "اللغة الإنجليزية", "العلوم", "التاريخ والجغرافيا", "التربية الوطنية", "الثقافة المالية", "الحاسوب"]
+            },
+            {
+                grade: "الصف التاسع الأساسي",
+                type: "المرحلة الأساسية العليا",
+                subjects: ["التربية الإسلامية", "اللغة العربية (قواعد وبدل)", "الرياضيات", "اللغة الإنجليزية", "العلوم الحياتية والفيزيائية", "التاريخ والأردن", "الجغرافيا والبيئة", "التربية الوطنية", "الثقافة المالية", "الحاسوب وتطبيقات الويب"]
+            },
+            {
+                grade: "الصف العاشر الأساسي",
+                type: "المرحلة الأساسية العليا",
+                subjects: ["التربية الإسلامية", "اللغة العربية", "الرياضيات", "اللغة الإنجليزية", "العلوم المتقدمة", "التاريخ والجغرافيا", "التربية الوطنية", "الثقافة المالية", "المهارات الرقمية"]
+            },
+            {
+                grade: "الأول الثانوي (حادي عشر) - حقل الصحة",
+                type: "المرحلة الثانوية (إصلاح 2026)",
+                subjects: ["المشترك (إسلامية، عربي، إنجليزي)", "العلوم الطبية الأساسية", "الأحياء المتقدم", "الكيمياء العضوية", "بحث وتجربة"]
+            },
+            {
+                grade: "الأول الثانوي (حادي عشر) - حقل الهندسة والتكنولوجيا",
+                type: "المرحلة الثانوية (إصلاح 2026)",
+                subjects: ["المشترك (إسلامية، عربي، إنجليزي)", "الرياضيات المتقدمة", "الفيزياء التطبيقية", "أساسيات البرمجة وتكنولوجيا المعلومات", "التصميم الهندسي"]
+            },
+            {
+                grade: "الأول الثانوي (حادي عشر) - حقل الأعمال",
+                type: "المرحلة الثانوية (إصلاح 2026)",
+                subjects: ["المشترك (إسلامية، عربي، إنجليزي)", "المحاسبة وإدارة الأعمال", "الاقتصاد الجزئي والكلي", "الثقافة المالية المتقدمة", "التسويق الرقمي"]
+            },
+            {
+                grade: "الأول الثانوي (حادي عشر) - حقل العلوم الإنسانية واللغات",
+                type: "المرحلة الثانوية (إصلاح 2026)",
+                subjects: ["المشترك (إسلامية، عربي، إنجليزي)", "الدراسات الأدبية والنقدية", "التاريخ العالمي والمعاصر", "الجغرافيا التطبيقية", "اللغة الإنجليزية المتقدمة"]
+            },
+            {
+                grade: "التوجيهي (ثاني ثانوي) - الحقول الأكاديمية والمهنية BTEC",
+                type: "المرحلة الثانوية العامة 2026",
+                subjects: ["المواد المشتركة (إسلامية، عربي، إنجليزي، تاريخ أردن)", "مباحث حقل الصحة والتنسيق الطبي", "مباحث حقل الهندسة وتكنولوجيا المعلومات", "مباحث حقل الأعمال والقانون", "مباحث حقل العلوم الإنسانية", "مسارات التعليم المهني والتقني (BTEC)"]
+            }
+        ];
+
+        const container = document.getElementById('all-grades-container');
+
+        allCurriculum.forEach(item => {
+            let section = document.createElement('div');
+            section.className = 'grade-section';
+            
+            let subjectsHtml = '';
+            item.subjects.forEach(sub => {
+                subjectsHtml += `
+                    <div class="subject-item">
+                        <span>📚 ${sub}</span>
+                        <a href="subject-details.html?subject=${encodeURIComponent(sub)}&grade=${encodeURIComponent(item.grade)}" class="btn-open">عرض</a>
+                    </div>
+                `;
+            });
+
+            section.innerHTML = `
+                <span class="field-tag">${item.type}</span>
+                <h2 class="grade-title">${item.grade}</h2>
+                <div class="subjects-grid">
+                    ${subjectsHtml}
+                </div>
+            `;
+            
+            container.appendChild(section);
+        });
+    </script>
 </body>
 </html>
