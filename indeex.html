@@ -1,20 +1,58 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>المساعد الذكي للمنهج الأردني</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة التعليم الأردنية الشاملة</title>
     <style>
-        body { font-family: Tahoma, sans-serif; background-color: #f4f7f6; text-align: center; padding: 50px; }
-        h1 { color: #2c3e50; }
-        p { color: #555; font-size: 18px; }
-        .box { background: white; padding: 30px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); display: inline-block; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        body { background-color: #f4f7f6; color: #333; line-height: 1.6; }
+        header { background: linear-gradient(135deg, #0056b3, #00838f); color: white; padding: 3rem 1rem; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        header h1 { font-size: 2.8rem; margin-bottom: 0.5rem; }
+        header p { font-size: 1.3rem; opacity: 0.9; }
+        .container { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .card { background: white; border-radius: 10px; padding: 2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.3s ease; border-top: 5px solid #0056b3; text-align: center; }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { color: #0056b3; margin-bottom: 1rem; font-size: 1.5rem; }
+        .card p { color: #666; margin-bottom: 1.5rem; font-size: 1rem; }
+        .btn { display: inline-block; background-color: #00838f; color: white; padding: 0.8rem 1.5rem; border-radius: 5px; text-decoration: none; font-weight: bold; transition: background 0.2s; }
+        .btn:hover { background-color: #0056b3; }
+        footer { text-align: center; padding: 1.5rem; background-color: #263238; color: white; margin-top: 3rem; }
     </style>
 </head>
 <body>
-    <div class="box">
-        <h1>منصة المساعد الذكي للمنهج الأردني</h1>
-        <p>مرحباً بك يا أبو يوسف! المنصة تعمل الآن أونلاين وجاهزة للطلاب 24/7.</p>
+    <header>
+        <h1>منصة التعليم الأردنية</h1>
+        <p>المرجع الشامل لجميع الصفوف والمناهج الدراسية (من الأول وحتى التوجيهي) 2026</p>
+    </header>
+
+    <div class="container">
+        <div class="grid">
+            <div class="card">
+                <h3>🎓 اختر صفك الدراسي</h3>
+                <p>تصفح الكتب، الشروحات، المكثفات، وحل أسئلة المراجعة مصنفة حسب الصفوف والمراحل.</p>
+                <a href="/grades" class="btn">تصفح الصفوف</a>
+            </div>
+            
+            <div class="card">
+                <h3>📝 بنك الاختبارات والتدريبات</h3>
+                <p>اختبر معلوماتك في مختلف المواد والوحدات الدراسية وتقييم مستواك أولاً بأول.</p>
+                <a href="/quiz" class="btn">ابدأ الاختبار</a>
+            </div>
+
+            <div class="card">
+                <h3>💡 المساعد الذكي</h3>
+                <p>استفسر عن أي سؤال دراسي واحصل على إجابات وشروحات فورية مبسطة.</p>
+                <a href="#" class="btn" onclick="alert('أهلاً بك! اكتب سؤالك واستفد من المنصة.'); return false;">اسأل الآن</a>
+            </div>
+        </div>
     </div>
+
+    <footer>
+        <p>جميع حقوق الطبع والنشر محفوظة © 2026 - منصة التعليم الأردنية</p>
+    </footer>
 </body>
 </html>
 
